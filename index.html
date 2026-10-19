@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>NexSite AI - Pure HTML & CSS Website Copilot</title>
+  <meta name="description" content="Generative AI website builder powered by Google Gemini API, HTML5, CSS3, and JavaScript.">
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800;900&family=Outfit:wght@400;600;700;800&family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400&family=Poppins:wght@400;600;700;800&family=Space+Mono:ital,wght@0,400;0,700;1,400&family=Syne:wght@600;700;800&display=swap" rel="stylesheet">
+
+  <!-- Pure CSS Stylesheet -->
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- Top Navigation Bar -->
+  <header>
+    <nav class="navbar">
+      <div class="nav-brand">
+        <span class="nav-logo">NexSite AI</span>
+        <span class="nav-tagline">100% Pure HTML & CSS</span>
+      </div>
+      <div class="nav-links">
+        <button id="nav-home-btn" class="nav-btn">Home</button>
+        <button id="nav-templates-btn" class="nav-btn">Templates</button>
+        <button id="nav-builder-btn" class="nav-btn">Builder</button>
+        <button id="nav-contact-btn" class="nav-btn">Contact</button>
+        <button id="nav-export-btn" class="nav-btn btn-export">Export HTML</button>
+      </div>
+    </nav>
+  </header>
+
+  <!-- Main App Layout -->
+  <div class="app-layout">
+    
+    <!-- Left: NexSite Copilot Sidebar -->
+    <aside class="copilot-sidebar">
+      <div class="sidebar-header">
+        <h2>NexSite Copilot</h2>
+        <p>Iteratively generate and refine websites with Gemini AI.</p>
+      </div>
+
+      <!-- API Key Input -->
+      <div class="api-key-box">
+        <div class="api-key-header">
+          <span>Gemini API Key</span>
+          <span id="api-key-status" class="status-badge missing">Required</span>
+        </div>
+        <input 
+          type="password" 
+          id="api-key-input" 
+          class="sidebar-input" 
+          placeholder="Paste Google Gemini API Key"
+          autocomplete="off"
+        >
+      </div>
+
+      <!-- Chat History -->
+      <div class="chat-thread" id="chat-history">
+        <div class="chat-bubble ai">
+          Welcome to NexSite AI! Describe your vision or choose a quick suggestion below to generate your website.
+        </div>
+      </div>
+
+      <!-- Quick Suggestion Chips -->
+      <div class="suggestion-chips">
+        <button type="button" class="chip-btn" data-prompt="Add a transparent pricing section with 3 tiers">Add Pricing</button>
+        <button type="button" class="chip-btn" data-prompt="Add client testimonials with quote cards">Add Testimonials</button>
+        <button type="button" class="chip-btn" data-prompt="Switch theme to brutalist with high-contrast typography">Brutalist Theme</button>
+        <button type="button" class="chip-btn" data-prompt="Add a magazine grid with design categories">Magazine Grid</button>
+        <button type="button" class="chip-btn" data-prompt="Make it a modern dark SaaS startup page with metrics">SaaS Startup</button>
+      </div>
+
+      <!-- Prompt Input Form -->
+      <form id="chat-form" class="chat-form">
+        <textarea 
+          id="prompt-input" 
+          class="prompt-textarea" 
+          placeholder="e.g. Create a sleek portfolio for an architectural photographer..."
+          rows="3"
+        ></textarea>
+        <div class="form-actions">
+          <button type="submit" id="send-btn" class="btn-send">Send</button>
+          <button type="button" id="reset-btn" class="btn-reset">Reset</button>
+        </div>
+      </form>
+    </aside>
+
+    <!-- Right: Dynamic Website Preview Area -->
+    <main class="preview-workspace" id="website-preview" data-theme="dark">
+      <div class="preview-container" id="exportable-area">
+        
+        <!-- Hero Header -->
+        <div class="preview-hero">
+          <h1 id="preview-hero-title">NexSite AI Builder</h1>
+          <p id="preview-hero-subtitle">Pure HTML5 &amp; CSS3 Dynamic Website Engine powered by Generative AI.</p>
+        </div>
+
+        <!-- Container where AI injects sections dynamically -->
+        <div id="dynamic-sections"></div>
+
+      </div>
+    </main>
+
+  </div>
+
+  <!-- Templates Modal -->
+  <div id="templates-modal" class="modal-overlay hidden">
+    <div class="modal-dialog">
+      <div class="modal-header">
+        <h2>Select a Preset Template</h2>
+        <button id="close-modal-btn" class="btn-close" aria-label="Close modal">&times;</button>
+      </div>
+      <div class="templates-grid" id="templates-grid">
+        <!-- Rendered dynamically by app.js from templates.js -->
+      </div>
+    </div>
+  </div>
+
+  <!-- Semantic Footer -->
+  <footer class="app-footer">
+    <div class="footer-content">
+      <div class="footer-col">
+        <h3>NexSite AI</h3>
+        <p>A pure HTML, CSS, and Vanilla JavaScript Generative AI website copilot powered by the Google Gemini API.</p>
+      </div>
+      <div class="footer-col">
+        <h4>Navigation</h4>
+        <p><a href="#website-preview">Preview</a></p>
+        <p><a href="#chat-history">Copilot Chat</a></p>
+      </div>
+      <div class="footer-col">
+        <h4>Technology</h4>
+        <p>HTML5 Semantic Architecture</p>
+        <p>CSS3 Custom Properties &amp; Glassmorphism</p>
+        <p>Vanilla JavaScript (ES6+)</p>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      &copy; 2026 NexSite AI. Built with pure HTML, CSS &amp; JavaScript.
+    </div>
+  </footer>
+
+  <!-- Application Logic (Native ES Module) -->
+  <script type="module" src="js/app.js"></script>
+
+</body>
+</html>
