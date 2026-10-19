@@ -1,10 +1,10 @@
 /**
- * NexSite AI - Native Gemini API Integration
+ * AI-WebBuilder - Native Gemini API Integration
  * Pure browser fetch() implementation (Zero external SDK dependencies)
  */
 
 const systemInstruction = `
-You are NexSite AI, an expert AI Website Copilot and frontend web architect.
+You are AI-WebBuilder, an expert AI Website Copilot and frontend web architect.
 Your task is to generate and iteratively refine website configurations based on user prompts.
 
 You must ALWAYS respond with ONLY a valid, raw JSON object. Do not include markdown code blocks (like \`\`\`json) or any conversational text.

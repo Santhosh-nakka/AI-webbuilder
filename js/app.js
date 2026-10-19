@@ -7,7 +7,7 @@ const defaultInitialConfig = {
   websiteType: "business",
   themeType: "dark",
   fontFamily: "'Inter', sans-serif",
-  customTitle: "NexSite AI Builder",
+  customTitle: "AI-WebBuilder",
   customSubtitle: "Pure HTML5 & CSS3 Dynamic Website Engine powered by Generative AI.",
   customBackgroundColor: "#0f172a",
   customTextColor: "#f8fafc",
@@ -16,7 +16,7 @@ const defaultInitialConfig = {
       type: "editorial",
       props: {
         headline: "WE BUILD THE FUTURE",
-        text: "NexSite AI dynamically designs, styles, and renders modular web components in real-time.",
+        text: "AI-WebBuilder dynamically designs, styles, and renders modular web components in real-time.",
         imageKeyword: "futuristic architecture minimalism",
         reverse: false
       }
@@ -64,14 +64,14 @@ const themePresets = {
   warm: { bg: "#a0522d", text: "#fff8f0" }
 };
 
-class NexSiteApp {
+class AIWebBuilderApp {
   constructor() {
-    this.apiKey = localStorage.getItem("nexsite-api-key") || "";
+    this.apiKey = localStorage.getItem("ai-webbuilder-api-key") || localStorage.getItem("nexsite-api-key") || "";
     this.chatHistory = [];
     this.isLoading = false;
 
     // Load saved configuration or fall back to default
-    const savedConfig = localStorage.getItem("nexsite-site-config");
+    const savedConfig = localStorage.getItem("ai-webbuilder-site-config") || localStorage.getItem("nexsite-site-config");
     this.siteConfig = savedConfig ? JSON.parse(savedConfig) : defaultInitialConfig;
 
     this.cacheDomElements();
@@ -109,7 +109,7 @@ class NexSiteApp {
     this.updateApiKeyBadge();
     this.apiKeyInput.addEventListener("input", (e) => {
       this.apiKey = e.target.value.trim();
-      localStorage.setItem("nexsite-api-key", this.apiKey);
+      localStorage.setItem("ai-webbuilder-api-key", this.apiKey);
       this.updateApiKeyBadge();
     });
 
@@ -193,7 +193,7 @@ class NexSiteApp {
 
   applyConfiguration(config) {
     this.siteConfig = config;
-    localStorage.setItem("nexsite-site-config", JSON.stringify(config));
+    localStorage.setItem("ai-webbuilder-site-config", JSON.stringify(config));
 
     // Determine colors
     const theme = themePresets[config.themeType] || themePresets.dark;
@@ -210,7 +210,7 @@ class NexSiteApp {
     this.previewContainer.setAttribute("data-theme", config.themeType || "dark");
 
     // Update Hero Title & Subtitle
-    this.heroTitle.textContent = config.customTitle || "NexSite AI Builder";
+    this.heroTitle.textContent = config.customTitle || "AI-WebBuilder";
     this.heroSubtitle.textContent = config.customSubtitle || "";
 
     // Render all dynamic sections
@@ -325,7 +325,7 @@ class NexSiteApp {
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>${this.siteConfig.customTitle || "NexSite AI Website"}</title>
+  <title>${this.siteConfig.customTitle || "AI-WebBuilder Website"}</title>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800;900&family=Playfair+Display:wght@400;700;900&family=Space+Mono:wght@400;700&family=Poppins:wght@400;600;800&family=Outfit:wght@400;700;900&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css">
   <style>
@@ -356,7 +356,7 @@ class NexSiteApp {
     const url = URL.createObjectURL(blob);
     const a = document.createElement("a");
     a.href = url;
-    a.download = `${(this.siteConfig.customTitle || "nexsite-website").toLowerCase().replace(/[^a-z0-9]+/g, "-")}.html`;
+    a.download = `${(this.siteConfig.customTitle || "ai-webbuilder-website").toLowerCase().replace(/[^a-z0-9]+/g, "-")}.html`;
     document.body.appendChild(a);
     a.click();
     document.body.removeChild(a);
@@ -366,5 +366,5 @@ class NexSiteApp {
 
 // Instantiate on DOMContentLoaded
 document.addEventListener("DOMContentLoaded", () => {
-  new NexSiteApp();
+  new AIWebBuilderApp();
 });

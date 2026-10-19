@@ -1,5 +1,5 @@
 <div align="center">
-  <h1>NexSite AI 🚀</h1>
+  <h1>AI-WebBuilder 🚀</h1>
   <p><b>An intelligent Generative AI website copilot built purely with HTML5, CSS3, and Vanilla JavaScript.</b></p>
   
   ![HTML5](https://img.shields.io/badge/HTML5-E34F26?style=for-the-badge&logo=html5&logoColor=white)
@@ -24,7 +24,7 @@
 ---
 
 ## 🚀 About the Project
-**NexSite AI** is a Generative AI-powered website builder that acts as a real-time copilot for web design. It empowers users to generate and iteratively refine custom, highly-visual website layouts simply by typing natural language prompts.
+**AI-WebBuilder** is a Generative AI-powered website builder that acts as a real-time copilot for web design. It empowers users to generate and iteratively refine custom, highly-visual website layouts simply by typing natural language prompts.
 
 Under the hood, the application communicates directly with the **Google Gemini API** using native browser ES modules to translate conversational requests into structured JSON configurations. A custom **pure JavaScript rendering engine** dynamically parses these configurations and injects them into clean, semantic **HTML5 and CSS3** templates in real-time — with **zero frameworks, zero bundlers, and zero React**.
 
@@ -53,9 +53,9 @@ Under the hood, the application communicates directly with the **Google Gemini A
 
 ```mermaid
 flowchart TD
-    A[User Input] -->|Prompt + Commands| B(NexSite Copilot Sidebar)
+    A[User Input] -->|Prompt + Commands| B(AI-WebBuilder Copilot Sidebar)
     B -->|User Prompt + Current JSON State| C{Pure JavaScript Controller (app.js)}
-    C -->|Native ES Module REST Request| D[Google Gemini API]
+    C -->|Native Fetch REST Request| D[Google Gemini API]
     D -->|Strict Structured JSON Response| C
     C -->|Processes JSON & Theme Variables| E[HTML/CSS Dynamic Rendering Engine (renderer.js)]
     E -->|Injects Semantic HTML & CSS Custom Properties| F[Live Interactive Website Preview]
@@ -67,13 +67,13 @@ flowchart TD
 ## 📁 Project Structure
 
 ```text
-nexsite-ai/
+AI-webbuilder/
 ├── index.html          # Semantic HTML5 entry point & workspace
 ├── style.css           # Complete pure CSS design system & dynamic theme engine
 ├── js/
 │   ├── app.js          # Core application controller & state manager
 │   ├── renderer.js     # Pure HTML/CSS dynamic section rendering engine
-│   ├── ai.js           # Native Google Gemini API integration (ESM)
+│   ├── ai.js           # Native Google Gemini API integration (Fetch)
 │   └── templates.js    # 10+ preset starting templates
 ├── .gitignore          # Git ignore configuration
 ├── LICENSE             # MIT License
@@ -89,8 +89,8 @@ Because this project is built entirely with pure web standards (**HTML5, CSS3, V
 
 1. **Clone the repository:**
    ```bash
-   git clone https://github.com/Santhosh-nakka/nexsite-ai.git
-   cd nexsite-ai
+   git clone https://github.com/Santhosh-nakka/AI-webbuilder.git
+   cd AI-webbuilder
    ```
 
 2. **Open the application:**
@@ -109,7 +109,7 @@ Because this project is built entirely with pure web standards (**HTML5, CSS3, V
 ## 💻 Technical Highlights
 - **100% Pure Vanilla Stack:** No React, No Vite, No Tailwind, No node_modules.
 - **CSS Custom Properties:** Dynamic live theme switching with zero page reloads.
-- **Native ES Modules:** Uses browser-native `import`/`export` and imports the Gemini SDK directly via ESM CDN.
+- **Native Fetch REST API:** Uses browser-native `fetch()` to call the Google Gemini endpoint directly.
 - **Secure Architecture:** API keys are stored solely in browser `localStorage` and never transmitted to external third-party servers.
 
 ---

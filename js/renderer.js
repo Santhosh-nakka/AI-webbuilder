@@ -1,5 +1,5 @@
 /**
- * NexSite AI - Dynamic Section Renderer Engine (Pure JavaScript & HTML/CSS)
+ * AI-WebBuilder - Dynamic Section Renderer Engine (Pure JavaScript & HTML/CSS)
  * Translates AI-generated JSON layouts into clean, accessible, semantic HTML.
  */
 
@@ -43,7 +43,7 @@ function escapeHtml(str) {
 }
 
 function renderHero(props) {
-  const title = escapeHtml(props.title || 'Welcome to NexSite AI');
+  const title = escapeHtml(props.title || 'Welcome to AI-WebBuilder');
   const subtitle = escapeHtml(props.subtitle || 'Build modern websites dynamically with AI.');
   return `
     <section class="section hero-section">
@@ -160,7 +160,7 @@ function renderProjects(props) {
 function renderTestimonials(props) {
   const title = escapeHtml(props.title || 'What People Say');
   const testimonials = Array.isArray(props.testimonials) && props.testimonials.length > 0 ? props.testimonials : [
-    { quote: 'NexSite AI revolutionized how we prototype and launch client websites.', author: 'Sarah Jenkins, Design Lead' }
+    { quote: 'AI-WebBuilder revolutionized how we prototype and launch client websites.', author: 'Sarah Jenkins, Design Lead' }
   ];
 
   const cardsHtml = testimonials.map(t => `
@@ -213,7 +213,7 @@ function renderPricing(props) {
 function renderFAQ(props) {
   const title = escapeHtml(props.title || 'Frequently Asked Questions');
   const questions = Array.isArray(props.questions) && props.questions.length > 0 ? props.questions : [
-    { question: 'How does NexSite AI work?', answer: 'It translates natural language prompts into structured JSON website components and renders them dynamically.' }
+    { question: 'How does AI-WebBuilder work?', answer: 'It translates natural language prompts into structured JSON website components and renders them dynamically.' }
   ];
 
   const itemsHtml = questions.map(q => `
@@ -235,7 +235,7 @@ function renderFAQ(props) {
 
 function renderCTA(props) {
   const title = escapeHtml(props.title || 'Ready to Build Something Unforgettable?');
-  const subtitle = escapeHtml(props.subtitle || 'Join thousands of creators using NexSite AI today.');
+  const subtitle = escapeHtml(props.subtitle || 'Join thousands of creators using AI-WebBuilder today.');
   const buttonText = escapeHtml(props.buttonText || 'Get Started Now');
 
   return `
