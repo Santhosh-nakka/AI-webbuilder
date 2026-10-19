@@ -164,7 +164,19 @@ class NexSiteApp {
     });
   }
 
-  init() {
+  async init() {
+    if (!this.apiKey) {
+      try {
+        const config = await import('./config.js');
+        if (config && config.DEFAULT_GEMINI_KEY) {
+          this.apiKey = config.DEFAULT_GEMINI_KEY;
+          this.apiKeyInput.value = this.apiKey;
+          this.updateApiKeyBadge();
+        }
+      } catch (e) {
+        // config.js not found or ignored
+      }
+    }
     this.populateTemplatesGrid();
     this.applyConfiguration(this.siteConfig);
   }
