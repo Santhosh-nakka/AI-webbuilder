@@ -1,6 +1,6 @@
-import { generateWebsite } from './ai.js?v=2.1';
-import { renderSection } from './renderer.js?v=2.1';
-import { presetTemplates } from './templates.js?v=2.1';
+import { generateWebsite } from './ai.js?v=3.0';
+import { renderSection } from './renderer.js?v=3.0';
+import { presetTemplates } from './templates.js?v=3.0';
 
 // Default initial website configuration
 const defaultInitialConfig = {
