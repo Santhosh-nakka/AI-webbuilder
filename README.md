@@ -53,13 +53,13 @@ Under the hood, the application communicates directly with the **Google Gemini A
 
 ```mermaid
 flowchart TD
-    A[User Input] -->|Prompt + Commands| B(AI-WebBuilder Copilot Sidebar)
-    B -->|User Prompt + Current JSON State| C{Pure JavaScript Controller (app.js)}
-    C -->|Native Fetch REST Request| D[Google Gemini API]
-    D -->|Strict Structured JSON Response| C
-    C -->|Processes JSON & Theme Variables| E[HTML/CSS Dynamic Rendering Engine (renderer.js)]
-    E -->|Injects Semantic HTML & CSS Custom Properties| F[Live Interactive Website Preview]
-    F -->|One-Click Action| G[Standalone Exported HTML File]
+    A["User Input"] -->|"Prompt + Commands"| B["AI-WebBuilder Copilot Sidebar"]
+    B -->|"User Prompt + Current JSON State"| C["Pure JavaScript Controller (app.js)"]
+    C -->|"Native Fetch REST Request"| D["Google Gemini API"]
+    D -->|"Strict Structured JSON Response"| C
+    C -->|"Processes JSON & Theme Variables"| E["HTML/CSS Dynamic Rendering Engine (renderer.js)"]
+    E -->|"Injects Semantic HTML & CSS Custom Properties"| F["Live Interactive Website Preview"]
+    F -->|"One-Click Action"| G["Standalone Exported HTML File"]
 ```
 
 ---
