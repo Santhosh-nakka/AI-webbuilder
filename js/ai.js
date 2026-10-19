@@ -117,29 +117,47 @@ export async function generateWebsite(apiKey, prompt, currentConfig) {
   }
 
   const genAI = new GoogleGenerativeAI(apiKey.trim());
-  const model = genAI.getGenerativeModel({
-    model: "gemini-1.5-flash",
-    systemInstruction,
-    generationConfig: {
-      temperature: 0.7,
-      responseMimeType: "application/json",
-    },
-  });
+  const candidateModels = ["gemini-flash-lite-latest", "gemini-2.5-flash", "gemini-flash-latest"];
+  
+  let result = null;
+  let lastError = null;
 
-  const chatSession = model.startChat({
-    history: [
-      {
-        role: "user",
-        parts: [{ text: `Current website configuration: ${JSON.stringify(currentConfig || {})}` }],
-      },
-      {
-        role: "model",
-        parts: [{ text: `Understood. I have the current state in memory and will modify it precisely while preserving untouched sections.` }],
-      }
-    ],
-  });
+  for (const modelName of candidateModels) {
+    try {
+      const model = genAI.getGenerativeModel({
+        model: modelName,
+        systemInstruction,
+        generationConfig: {
+          temperature: 0.7,
+          responseMimeType: "application/json",
+        },
+      });
 
-  const result = await chatSession.sendMessage(prompt);
+      const chatSession = model.startChat({
+        history: [
+          {
+            role: "user",
+            parts: [{ text: `Current website configuration: ${JSON.stringify(currentConfig || {})}` }],
+          },
+          {
+            role: "model",
+            parts: [{ text: `Understood. I have the current state in memory and will modify it precisely while preserving untouched sections.` }],
+          }
+        ],
+      });
+
+      result = await chatSession.sendMessage(prompt);
+      if (result) break;
+    } catch (err) {
+      console.warn(`Model ${modelName} failed, trying next fallback:`, err.message);
+      lastError = err;
+    }
+  }
+
+  if (!result) {
+    throw lastError || new Error("Failed to generate content with available Gemini models.");
+  }
+
   let text = result.response.text();
 
   // Clean any markdown backticks if returned
