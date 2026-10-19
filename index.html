@@ -6,6 +6,11 @@
   <title>NexSite AI - Pure HTML & CSS Website Copilot</title>
   <meta name="description" content="Generative AI website builder powered by Google Gemini API, HTML5, CSS3, and JavaScript.">
 
+  <!-- Prevent browser caching of JS modules -->
+  <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+  <meta http-equiv="Pragma" content="no-cache">
+  <meta http-equiv="Expires" content="0">
+
   <!-- Google Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -144,8 +149,8 @@
     </div>
   </footer>
 
-  <!-- Application Logic (Native ES Module) -->
-  <script type="module" src="js/app.js"></script>
+  <!-- Application Logic (Native ES Module with Cache Buster) -->
+  <script type="module" src="js/app.js?v=2.1"></script>
 
 </body>
 </html>
